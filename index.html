@@ -1,0 +1,1946 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aucare Pet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Readex Pro", Arial, sans-serif;
+      color: #0072a8;
+      background: #157ca4;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a,
+    button,
+    .service-card,
+    .plan-card,
+    .clinic-feature,
+    .product-card,
+    .review-card {
+      transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1), filter 420ms ease, background 420ms ease, color 420ms ease, opacity 420ms ease;
+      will-change: transform;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.88);
+      outline-offset: 4px;
+    }
+
+    .nav a:hover,
+    .footer-nav a:hover {
+      opacity: 0.78;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 98px;
+      background: #ffffff;
+      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.18);
+    }
+
+    .nav {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      height: 98px;
+    }
+
+    .nav-group-left {
+      left: 65px;
+      gap: 59px;
+    }
+
+    .nav-group-right {
+      right: 65px;
+      gap: 43px;
+    }
+
+    .nav a {
+      color: #006fa7;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 172px;
+      height: 70px;
+    }
+
+    .logo {
+      display: block;
+      width: 133px;
+      height: auto;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 114px;
+      height: 39px;
+      padding: 0 22px;
+      border-radius: 14px;
+      color: #ffffff !important;
+      background: #eac09c;
+    }
+
+    .contact-button:hover,
+    .hero-button:hover,
+    .card-button:hover,
+    .plan-more-button:hover,
+    .clinic-cta:hover,
+    .nutrition-cta:hover,
+    .maps-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.025);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .contact-button:active,
+    .hero-button:active,
+    .card-button:active,
+    .plan-more-button:active,
+    .clinic-cta:active,
+    .nutrition-cta:active,
+    .maps-button:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 670px;
+      margin-top: 98px;
+      overflow: hidden;
+      background: #157ca4;
+    }
+
+    .hero-frame {
+      position: relative;
+      width: 1366px;
+      height: 768px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: url("https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos.png");
+      background-repeat: no-repeat;
+      background-position: center -98px;
+      background-size: 1366px 768px;
+    }
+
+    .hero-button {
+      position: absolute;
+      top: 484px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-family: "Readex Pro", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.15;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .hero-button-primary {
+      left: 124px;
+      width: 254px;
+      color: #0072a8;
+      background: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    .hero-button-secondary {
+      left: 391px;
+      width: 247px;
+      color: #ffffff;
+      background: transparent;
+      border: 2px solid #ffffff;
+    }
+
+    .services-section {
+      width: 100%;
+      padding: 106px 0 120px;
+      background: #dcdcdc;
+    }
+
+    .services-inner {
+      width: 1110px;
+      margin: 0 auto;
+    }
+
+    .services-title {
+      margin: 0;
+      color: #0878aa;
+      font-size: 41px;
+      font-weight: 500;
+      line-height: 1.12;
+      text-align: center;
+    }
+
+    .services-line {
+      width: 612px;
+      height: 2px;
+      margin: 22px auto 78px;
+      background: linear-gradient(90deg, #dcdcdc 0%, rgba(255, 255, 255, 0.9) 50%, #dcdcdc 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 348px);
+      gap: 38px;
+      justify-content: center;
+    }
+
+    .service-card {
+      min-height: 637px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 39px;
+      background: #137fad;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-card:hover,
+    .plan-card:hover,
+    .product-card:hover,
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-photo {
+      width: 100%;
+      height: 165px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 37px 50px 30px;
+      color: #ffffff;
+      background: #137fad;
+    }
+
+    .service-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-height: 56px;
+      margin-bottom: 28px;
+      color: #edbd91;
+    }
+
+    .service-icon,
+    .button-icon {
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .service-icon {
+      width: 51px;
+      height: 51px;
+      object-fit: contain;
+    }
+
+    .service-heading h3 {
+      margin: 0;
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 1.02;
+      color: #c4a387;
+      background: linear-gradient(90deg, #c4a387 0%, #ffe3cb 50%, #c4a387 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grooming-card .service-heading {
+      justify-content: flex-start;
+      border-top: 1px solid rgba(237, 189, 145, 0.18);
+    }
+
+    .service-text,
+    .service-list {
+      margin: 0;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.17;
+    }
+
+    .service-text + .service-text {
+      margin-top: 22px;
+    }
+
+    .service-list {
+      padding-left: 20px;
+      list-style-position: outside;
+    }
+
+    .service-list li {
+      margin-bottom: 9px;
+      padding-left: 3px;
+    }
+
+    .service-list li::marker {
+      font-size: 12px;
+    }
+
+    .service-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .card-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border-radius: 26px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.05;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .whatsapp-button {
+      width: 246px;
+      gap: 15px;
+      justify-content: flex-start;
+      padding: 0 20px;
+      color: #ffffff;
+      background: #55e72d;
+    }
+
+    .whatsapp-button .button-icon {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+
+    .plan-button,
+    .more-button {
+      color: #0072a8;
+      background: #ffffff;
+    }
+
+    .plan-button {
+      width: 246px;
+      gap: 15px;
+      padding-right: 20px;
+      padding-left: 19px;
+    }
+
+    .plan-button .button-icon {
+      width: 39px;
+      height: 39px;
+      object-fit: contain;
+    }
+
+    .button-text {
+      display: inline-block;
+      line-height: 1.06;
+      text-align: left;
+    }
+
+    .button-arrow {
+      width: 23px;
+      height: 23px;
+      display: block;
+      flex: 0 0 auto;
+      margin-left: auto;
+      object-fit: contain;
+    }
+
+    .more-button {
+      width: 246px;
+      min-height: 50px;
+      position: relative;
+      justify-content: center;
+      margin-top: auto;
+      padding: 0 54px;
+      font-size: 15px;
+      letter-spacing: 5px;
+      white-space: nowrap;
+    }
+
+    .more-button .button-arrow {
+      position: absolute;
+      right: 16px;
+      margin-left: 0;
+      letter-spacing: 0;
+    }
+
+    .taxi-banner {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      align-items: center;
+      min-height: 156px;
+      margin-top: 58px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: linear-gradient(90deg, #0d73a6 0%, #0893d8 100%);
+      box-shadow: 0 8px 17px rgba(0, 0, 0, 0.07);
+    }
+
+    .taxi-image-wrap {
+      position: relative;
+      height: 156px;
+      overflow: hidden;
+    }
+
+    .taxi-image {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 240px;
+      height: 156px;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .taxi-text {
+      padding: 24px 54px 24px 27px;
+      color: #ffffff;
+    }
+
+    .taxi-text h3 {
+      margin: 0 0 6px;
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .taxi-text p {
+      max-width: 770px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .plans-section {
+      width: 100%;
+      padding: 96px 0 112px;
+      background: #0878aa;
+    }
+
+    .plans-inner {
+      width: 996px;
+      margin: 0 auto;
+    }
+
+    .plans-title {
+      margin: 0;
+      font-size: 43px;
+      font-weight: 600;
+      line-height: 1.1;
+      text-align: center;
+      color: #c4a387;
+      background: linear-gradient(90deg, #c4a387 0%, #ffe3cb 50%, #c4a387 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .plans-line {
+      width: 646px;
+      height: 2px;
+      margin: 23px auto 21px;
+      background: linear-gradient(90deg, #0878aa 0%, rgba(255, 255, 255, 0.92) 50%, #0878aa 100%);
+    }
+
+    .plans-subtitle {
+      width: 560px;
+      margin: 0 auto 86px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: 5px;
+      text-align: center;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 308px);
+      gap: 37px;
+      justify-content: center;
+    }
+
+    .plan-card {
+      position: relative;
+      min-height: 494px;
+      padding: 22px 44px 43px;
+      border: 1.5px solid #008fd2;
+      border-radius: 31px;
+      color: #ffffff;
+      background: linear-gradient(180deg, #efccae 0%, #af947d 100%);
+      overflow: hidden;
+    }
+
+    .plan-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 23px;
+      min-width: 78px;
+      padding: 0 13px;
+      border-radius: 14px;
+      color: #ffffff;
+      background: rgba(131, 107, 88, 0.42);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .plan-icon {
+      display: block;
+      width: 83px;
+      height: 83px;
+      margin: 23px auto 30px;
+      object-fit: contain;
+    }
+
+    .plan-name {
+      margin: 0;
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .plan-name::after {
+      content: "";
+      display: block;
+      width: 108px;
+      height: 1px;
+      margin: 10px auto 6px;
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .plan-weight {
+      margin: 0 0 22px;
+      color: rgba(75, 62, 53, 0.82);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 7px;
+      text-align: center;
+    }
+
+    .plan-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .plan-check {
+      width: 20px;
+      height: 20px;
+      display: block;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .plan-more-button {
+      position: absolute;
+      left: 43px;
+      right: 43px;
+      bottom: 43px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #ffffff;
+      border-radius: 27px;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 4px;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .plan-more-button img {
+      position: absolute;
+      right: 13px;
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .clinic-section {
+      width: 100%;
+      padding: 96px 0 0;
+      background: #ffffff;
+    }
+
+    .clinic-intro {
+      width: 960px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .clinic-kicker {
+      margin: 0 0 15px;
+      color: #0878aa;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 7px;
+    }
+
+    .clinic-title {
+      width: 620px;
+      margin: 0 auto;
+      color: #0878aa;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1.02;
+    }
+
+    .clinic-title-line {
+      width: 520px;
+      height: 2px;
+      margin: 22px auto 52px;
+      background: linear-gradient(90deg, #ffffff 0%, rgba(8, 120, 170, 0.18) 50%, #ffffff 100%);
+    }
+
+    .clinic-description {
+      max-width: 940px;
+      margin: 0 auto;
+      color: #6d6d6d;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.28;
+    }
+
+    .clinic-description strong {
+      font-weight: 700;
+    }
+
+    .clinic-panel {
+      width: 100%;
+      padding: 76px 0 104px;
+      border-radius: 98px 98px 0 0;
+      background: #1286b8;
+    }
+
+    .clinic-panel-inner {
+      width: 1152px;
+      display: grid;
+      grid-template-columns: 563px 535px;
+      gap: 68px;
+      align-items: start;
+      margin: 0 auto;
+    }
+
+    .clinic-images {
+      display: flex;
+      flex-direction: column;
+      gap: 53px;
+    }
+
+    .clinic-photo {
+      width: 563px;
+      height: 498px;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+    }
+
+    .clinic-features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 4px;
+    }
+
+    .clinic-feature {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      align-items: center;
+      min-height: 158px;
+      padding: 20px 35px 20px 31px;
+      border-radius: 28px;
+      color: #595959;
+      background: #f7f7f7;
+    }
+
+    .clinic-feature:hover {
+      transform: translateX(3px);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.1);
+    }
+
+    .clinic-feature.is-blue {
+      color: #ffffff;
+      background: #63b4d6;
+    }
+
+    .clinic-feature-icon-wrap {
+      width: 96px;
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .clinic-feature-icon {
+      width: 58px;
+      height: 58px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .clinic-feature-text h3 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .clinic-feature-text p {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.18;
+    }
+
+    .clinic-cta {
+      height: 97px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 31px;
+      border-radius: 27px;
+      color: #ffffff;
+      background: #55e72d;
+      font-size: 33px;
+      font-weight: 400;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .clinic-cta span {
+      display: inline-block;
+    }
+
+    .clinic-cta strong {
+      font-weight: 700;
+    }
+
+    .clinic-cta img {
+      width: 48px;
+      height: 48px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nutrition-section-full {
+      width: 100%;
+      padding: 104px 0 116px;
+      background: #ffffff;
+    }
+
+    .nutrition-inner {
+      width: 1168px;
+      margin: 0 auto;
+    }
+
+    .nutrition-title {
+      margin: 0;
+      color: #0878aa;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .nutrition-title-line {
+      width: 510px;
+      height: 2px;
+      margin: 22px auto 50px;
+      background: linear-gradient(90deg, #ffffff 0%, rgba(8, 120, 170, 0.18) 50%, #ffffff 100%);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 258px);
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 162px;
+    }
+
+    .product-card {
+      position: relative;
+      height: 258px;
+      overflow: hidden;
+      border-radius: 43px;
+      color: #ffffff;
+      text-decoration: none;
+      background: #d8d8d8;
+    }
+
+    .product-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 46%, rgba(0, 0, 0, 0.64) 100%);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .product-card span {
+      position: absolute;
+      left: 31px;
+      bottom: 28px;
+      z-index: 1;
+      color: #ffffff;
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 0.92;
+    }
+
+    .nutrition-content {
+      display: grid;
+      grid-template-columns: 683px 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .doctor-image {
+      width: 683px;
+      height: auto;
+      display: block;
+    }
+
+    .nutrition-copy {
+      padding-top: 22px;
+      color: #0878aa;
+    }
+
+    .nutrition-copy p {
+      margin: 0 0 44px;
+      color: #0878aa;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.42;
+    }
+
+    .nutrition-copy strong {
+      font-weight: 700;
+    }
+
+    .nutrition-cta {
+      width: 456px;
+      height: 83px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      border-radius: 22px;
+      color: #ffffff;
+      background: #55e72d;
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .nutrition-cta span {
+      display: inline-block;
+    }
+
+    .nutrition-cta strong {
+      font-weight: 700;
+    }
+
+    .nutrition-cta img {
+      width: 39px;
+      height: 39px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .testimonials-section {
+      position: relative;
+      width: 100%;
+      min-height: 890px;
+      padding: 96px 0 0;
+      overflow: hidden;
+      background: #157ca4;
+    }
+
+    .testimonials-title {
+      margin: 0;
+      color: #eac09c;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .testimonials-line {
+      width: 560px;
+      height: 2px;
+      margin: 26px auto 0;
+      background: linear-gradient(90deg, #157ca4 0%, rgba(255, 255, 255, 0.45) 50%, #157ca4 100%);
+    }
+
+    .cat-image {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      z-index: 1;
+      width: 410px;
+      transform: translateX(-50%);
+    }
+
+    .review-card {
+      position: absolute;
+      z-index: 2;
+      width: 313px;
+      min-height: 153px;
+      padding: 22px 36px 24px 42px;
+      border-radius: 29px;
+      color: #000000;
+      background: #ffffff;
+    }
+
+    .review-card:nth-of-type(1) {
+      left: 108px;
+      top: 252px;
+    }
+
+    .review-card:nth-of-type(2) {
+      left: 108px;
+      top: 468px;
+    }
+
+    .review-card:nth-of-type(3) {
+      left: 108px;
+      top: 684px;
+    }
+
+    .review-card:nth-of-type(4) {
+      right: 108px;
+      top: 252px;
+    }
+
+    .review-card:nth-of-type(5) {
+      right: 108px;
+      top: 468px;
+    }
+
+    .review-card:nth-of-type(6) {
+      right: 108px;
+      top: 684px;
+    }
+
+    .review-head {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      column-gap: 13px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ffc4c4;
+    }
+
+    .review-name {
+      display: block;
+      margin-bottom: 2px;
+      color: #000000;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .review-stars {
+      display: block;
+      color: #ffb400;
+      font-size: 13px;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .review-text {
+      margin: 0;
+      color: #000000;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.06;
+    }
+
+    .info-section {
+      width: 100%;
+      padding: 101px 0 90px;
+      background: #f8f8f8;
+    }
+
+    .info-kicker {
+      margin: 0 0 15px;
+      color: #0878aa;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 7px;
+      text-align: center;
+    }
+
+    .info-title {
+      margin: 0;
+      color: #0878aa;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.12;
+      text-align: center;
+    }
+
+    .info-title strong {
+      font-weight: 700;
+    }
+
+    .info-line {
+      width: 640px;
+      height: 2px;
+      margin: 26px auto 72px;
+      background: linear-gradient(90deg, #f8f8f8 0%, rgba(255, 255, 255, 0.95) 50%, #f8f8f8 100%);
+    }
+
+    .info-content {
+      width: 1212px;
+      display: grid;
+      grid-template-columns: 606px 495px;
+      gap: 106px;
+      align-items: start;
+      margin: 0 auto;
+    }
+
+    .map-frame {
+      width: 606px;
+      height: 412px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #ffffff;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .maps-button {
+      width: 606px;
+      height: 83px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 36px;
+      border-radius: 23px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #54c42e 0%, #5ee430 100%);
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .info-card {
+      min-height: 532px;
+      padding: 72px 70px;
+      border-radius: 31px;
+      color: #ffffff;
+      background: #157ca4;
+    }
+
+    .info-card h3 {
+      margin: 0 0 58px;
+      font-size: 35px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .info-card p {
+      margin: 0 0 25px;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .info-card strong {
+      font-weight: 700;
+    }
+
+    .footer {
+      width: 100%;
+      padding: 54px 0 44px;
+      color: #ffffff;
+      background: #157ca4;
+    }
+
+    .footer-inner {
+      width: 1230px;
+      display: grid;
+      grid-template-columns: 455px 1fr 455px;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .footer-info {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 44px;
+      font-size: 15px;
+      line-height: 1.08;
+    }
+
+    .footer-info p,
+    .footer-nav a {
+      margin: 0;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-info p + p {
+      margin-top: 30px;
+    }
+
+    .footer-info strong {
+      font-weight: 700;
+    }
+
+    .footer-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .footer-logo {
+      width: 144px;
+      height: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .footer-social a {
+      width: 27px;
+      height: 27px;
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-social img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-social a:hover {
+      transform: translateY(-3px) scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 98px;
+      justify-content: end;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.42;
+      text-align: center;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      z-index: 30;
+      width: 66px;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #54c42e 0%, #5ee430 100%);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+      animation: whatsappPulse 2.4s ease-in-out infinite;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-3px) scale(1.035);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+      animation-play-state: paused;
+    }
+
+    .floating-whatsapp img {
+      width: 36px;
+      height: 36px;
+      display: block;
+      object-fit: contain;
+    }
+
+    @keyframes whatsappPulse {
+      0%,
+      100% {
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22), 0 0 0 0 rgba(94, 228, 48, 0.38);
+      }
+
+      50% {
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22), 0 0 0 13px rgba(94, 228, 48, 0);
+      }
+    }
+
+    @supports (animation-timeline: view()) {
+      .services-title,
+      .services-line,
+      .service-card,
+      .taxi-banner,
+      .plans-title,
+      .plans-line,
+      .plans-subtitle,
+      .plan-card,
+      .clinic-kicker,
+      .clinic-title,
+      .clinic-title-line,
+      .clinic-description,
+      .clinic-photo,
+      .clinic-feature,
+      .clinic-cta,
+      .nutrition-title,
+      .nutrition-title-line,
+      .product-card,
+      .doctor-image,
+      .nutrition-copy,
+      .testimonials-title,
+      .testimonials-line,
+      .cat-image,
+      .review-card,
+      .info-kicker,
+      .info-title,
+      .info-line,
+      .map-frame,
+      .maps-button,
+      .info-card,
+      .footer-info,
+      .footer-center,
+      .footer-nav {
+        animation: softReveal both;
+        animation-timeline: view();
+        animation-range: entry 6% cover 28%;
+      }
+
+      .service-card:nth-child(2),
+      .plan-card:nth-child(2),
+      .product-card:nth-child(2),
+      .clinic-feature:nth-child(2),
+      .review-card:nth-of-type(2),
+      .review-card:nth-of-type(5) {
+        animation-name: softRevealSlow;
+      }
+
+      .service-card:nth-child(3),
+      .plan-card:nth-child(3),
+      .product-card:nth-child(3),
+      .product-card:nth-child(4),
+      .clinic-feature:nth-child(3),
+      .clinic-feature:nth-child(4),
+      .clinic-feature:nth-child(5),
+      .review-card:nth-of-type(3),
+      .review-card:nth-of-type(6) {
+        animation-name: softRevealLater;
+      }
+    }
+
+    @keyframes softReveal {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes softRevealSlow {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes softRevealLater {
+      from {
+        opacity: 0;
+        transform: translateY(38px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .services-inner {
+        width: calc(100% - 48px);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .plans-inner {
+        width: calc(100% - 48px);
+      }
+
+      .plans-grid {
+        grid-template-columns: repeat(3, minmax(0, 308px));
+        gap: 24px;
+      }
+
+      .clinic-intro,
+      .clinic-panel-inner,
+      .nutrition-inner {
+        width: calc(100% - 48px);
+      }
+
+      .clinic-panel-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 38px;
+      }
+
+      .clinic-photo {
+        width: 100%;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .nutrition-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .doctor-image,
+      .nutrition-cta {
+        width: 100%;
+      }
+
+      .info-content,
+      .footer-inner {
+        width: calc(100% - 48px);
+      }
+
+      .info-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 495px);
+        gap: 40px;
+      }
+
+      .map-frame,
+      .maps-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .services-grid,
+      .plans-grid,
+      .taxi-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        max-width: 348px;
+        margin: 0 auto;
+      }
+
+      .services-line {
+        width: 60%;
+      }
+
+      .plans-line,
+      .plans-subtitle {
+        width: 80%;
+      }
+
+      .plan-card {
+        width: 308px;
+        margin: 0 auto;
+      }
+
+      .clinic-title,
+      .clinic-title-line {
+        width: 80%;
+      }
+
+      .clinic-panel {
+        border-radius: 52px 52px 0 0;
+      }
+
+      .clinic-panel-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .clinic-photo {
+        height: 360px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 258px));
+        margin-bottom: 80px;
+      }
+
+      .nutrition-content {
+        grid-template-columns: 1fr;
+      }
+
+      .doctor-image {
+        max-width: 683px;
+        margin: 0 auto;
+      }
+
+      .review-card {
+        position: relative;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        width: min(313px, calc(100% - 48px));
+        margin: 22px auto;
+      }
+
+      .cat-image {
+        position: relative;
+        width: 70%;
+        margin: 20px auto 0;
+        display: block;
+        transform: none;
+        left: auto;
+      }
+
+      .info-content {
+        grid-template-columns: 1fr;
+      }
+
+      .info-line {
+        width: 80%;
+      }
+
+      .footer-info,
+      .footer-nav {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        text-align: center;
+      }
+
+      .taxi-image-wrap {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegação principal">
+      <div class="nav-group nav-group-left">
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Serviços</a>
+        <a href="#">Planos de Banho</a>
+      </div>
+
+      <a class="logo-link" href="#" aria-label="Aucare Pet">
+        <img class="logo" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-47.png?w=1024&amp;allow_lossy=1" alt="Aucare">
+      </a>
+
+      <div class="nav-group nav-group-right">
+        <a href="#">Clínica</a>
+        <a href="#">Nutrição</a>
+        <a href="#">Depoimentos</a>
+        <a class="contact-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Aucare Pet">
+      <div class="hero-frame">
+        <a class="hero-button hero-button-primary" href="#">Agendar Banho e Tosa</a>
+        <a class="hero-button hero-button-secondary" href="#">Agendar Consulta</a>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="services-inner">
+        <h2 class="services-title">O que você encontra na Aucare?</h2>
+        <div class="services-line"></div>
+
+        <div class="services-grid">
+          <article class="service-card grooming-card">
+            <img class="service-photo" src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Pet recebendo banho e tosa">
+            <div class="service-content">
+              <div class="service-heading">
+                <img class="service-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/1.png?w=1024&amp;allow_lossy=1" alt="">
+                <h3>Banho &amp; Tosa<br>Premium</h3>
+              </div>
+              <p class="service-text">Banhos e tosas com produtos de <strong>qualidade, cuidado redobrado e atenção aos detalhes.</strong></p>
+              <p class="service-text">Seja em um atendimento avulso ou nos nossos planos de banho sem prazo para usar, o seu pet recebe sempre um <strong>cuidado atento e responsável.</strong></p>
+              <div class="service-actions">
+                <a class="card-button whatsapp-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Agendar <strong>Banho e<br>Tosa Premium</strong></span></a>
+                <a class="card-button plan-button" href="#"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/5.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Conhecer <strong>planos<br>de banho</strong></span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card clinic-card">
+            <img class="service-photo" src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Consulta veterinária com pet">
+            <div class="service-content">
+              <div class="service-heading">
+                <img class="service-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/2.png?w=1024&amp;allow_lossy=1" alt="">
+                <h3>Clínica<br>Veterinária</h3>
+              </div>
+              <ul class="service-list">
+                <li>Consultas em clínica geral</li>
+                <li>Vacinas, curativos e cuidados preventivos</li>
+                <li>Procedimentos veterinários em ambiente controlado</li>
+                <li>Dermatologia, oftalmologia e oncologia com profissionais parceiros</li>
+                <li>Internação para casos infecciosos e não infecciosos</li>
+              </ul>
+              <a class="card-button more-button" href="#"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+            </div>
+          </article>
+
+          <article class="service-card nutrition-card">
+            <img class="service-photo" src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Gato comendo ração">
+            <div class="service-content">
+              <div class="service-heading">
+                <img class="service-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/3.png?w=1024&amp;allow_lossy=1" alt="">
+                <h3>Nutrição &amp;<br>Produtos</h3>
+              </div>
+              <ul class="service-list">
+                <li>Rações de alta qualidade para o seu pet</li>
+                <li>Petiscos e brinquedos de pelúcia</li>
+                <li>Shampoos e itens de higiene</li>
+                <li>Medicações básicas, com orientação veterinária</li>
+              </ul>
+              <a class="card-button more-button" href="#"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="taxi-banner">
+          <div class="taxi-image-wrap">
+            <img class="taxi-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos-4.png?w=1024&amp;allow_lossy=1" alt="Dois pets para serviço de táxi dog">
+          </div>
+          <div class="taxi-text">
+            <h3>Sem tempo para <strong>levar ou buscar</strong> seu pet na Aucare?</h3>
+            <p>Conte com nossos parceiros para serviço de táxi dog. Buscamos e levamos o seu pet até a clínica, mediante disponibilidade e agendamento prévio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans-section">
+      <div class="plans-inner">
+        <h2 class="plans-title">Conheça nossos Planos de Banho</h2>
+        <div class="plans-line"></div>
+        <p class="plans-subtitle">ESCOLHA O PLANO IDEAL E USE OS BANHOS NO RITMO QUE FIZER SENTIDO PARA VOCÊ E PARA O SEU PET</p>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <span class="plan-badge">BÁSICO</span>
+            <img class="plan-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/1-1.png?w=1024&amp;allow_lossy=1" alt="">
+            <h3 class="plan-name">4 Banhos</h3>
+            <p class="plan-weight">ATÉ 10KG</p>
+            <ul class="plan-features">
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Banho completo</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Limpeza de ouvidos</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">1 máscara de hidratação</li>
+            </ul>
+            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+          </article>
+
+          <article class="plan-card">
+            <span class="plan-badge">ESSENCIAL</span>
+            <img class="plan-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/2-1.png?w=1024&amp;allow_lossy=1" alt="">
+            <h3 class="plan-name">12 Banhos</h3>
+            <p class="plan-weight">ATÉ 10KG</p>
+            <ul class="plan-features">
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Banho completo</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Limpeza de ouvidos</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">4 máscaras de hidratação</li>
+            </ul>
+            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+          </article>
+
+          <article class="plan-card">
+            <span class="plan-badge">PREMIUM</span>
+            <img class="plan-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/3-1.png?w=1024&amp;allow_lossy=1" alt="">
+            <h3 class="plan-name">24 Banhos</h3>
+            <p class="plan-weight">ATÉ 10KG</p>
+            <ul class="plan-features">
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Banho completo</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Limpeza de ouvidos</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
+              <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">9 máscaras de hidratação</li>
+            </ul>
+            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="clinic-section">
+      <div class="clinic-intro">
+        <p class="clinic-kicker">CLÍNICA VETERINÁRIA</p>
+        <h2 class="clinic-title">Cuidado Veterinário com responsabilidade</h2>
+        <div class="clinic-title-line"></div>
+        <p class="clinic-description">Da prevenção ao acompanhamento de casos mais delicados, a AuCare oferece <strong>estrutura, equipe e parceiros especializados</strong> para cuidar da <strong>saúde do seu pet.</strong></p>
+      </div>
+
+      <div class="clinic-panel">
+        <div class="clinic-panel-inner">
+          <div class="clinic-images">
+            <img class="clinic-photo" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Veterinária atendendo cachorro">
+            <img class="clinic-photo" src="https://images.unsplash.com/photo-1581093458791-9d42e0c45f80?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Profissional veterinária examinando pet">
+          </div>
+
+          <div class="clinic-features">
+            <article class="clinic-feature">
+              <div class="clinic-feature-icon-wrap">
+                <img class="clinic-feature-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/1-2.png?w=1024&amp;allow_lossy=1" alt="">
+              </div>
+              <div class="clinic-feature-text">
+                <h3>Clínica geral</h3>
+                <p>Consultas em clínica geral para cães e gatos, avaliação de saúde e acompanhamento contínuo.</p>
+              </div>
+            </article>
+
+            <article class="clinic-feature is-blue">
+              <div class="clinic-feature-icon-wrap">
+                <img class="clinic-feature-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/2-2.png?w=1024&amp;allow_lossy=1" alt="">
+              </div>
+              <div class="clinic-feature-text">
+                <h3>Vacinas &amp; prevenção</h3>
+                <p>Aplicação de vacinas, atualização de carteira e orientação preventiva.</p>
+              </div>
+            </article>
+
+            <article class="clinic-feature">
+              <div class="clinic-feature-icon-wrap">
+                <img class="clinic-feature-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/3-2.png?w=1024&amp;allow_lossy=1" alt="">
+              </div>
+              <div class="clinic-feature-text">
+                <h3>Procedimentos</h3>
+                <p>Procedimentos veterinários realizados em ambiente preparado e controlado, com monitoramento e foco em segurança.</p>
+              </div>
+            </article>
+
+            <article class="clinic-feature is-blue">
+              <div class="clinic-feature-icon-wrap">
+                <img class="clinic-feature-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-2.png?w=1024&amp;allow_lossy=1" alt="">
+              </div>
+              <div class="clinic-feature-text">
+                <h3>Especialidades</h3>
+                <p>Dermatologia, oftalmologia e oncologia com profissionais parceiros, mediante avaliação prévia e agendamento.</p>
+              </div>
+            </article>
+
+            <article class="clinic-feature">
+              <div class="clinic-feature-icon-wrap">
+                <img class="clinic-feature-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/5-1.png?w=1024&amp;allow_lossy=1" alt="">
+              </div>
+              <div class="clinic-feature-text">
+                <h3>Internação</h3>
+                <p>Espaços de internação com ambientes separados para casos infecciosos e não infecciosos, com supervisão da equipe.</p>
+              </div>
+            </article>
+
+            <a class="clinic-cta" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nutrition-section-full">
+      <div class="nutrition-inner">
+        <h2 class="nutrition-title">Nutrição &amp; Produtos</h2>
+        <div class="nutrition-title-line"></div>
+
+        <div class="product-grid">
+          <a class="product-card" href="#">
+            <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Gato comendo ração">
+            <span>Rações</span>
+          </a>
+
+          <a class="product-card" href="#">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cachorro brincando">
+            <span>Petiscos e<br>Brinquedos</span>
+          </a>
+
+          <a class="product-card" href="#">
+            <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cachorro em atendimento">
+            <span>Medicações</span>
+          </a>
+
+          <a class="product-card" href="#">
+            <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cuidado de higiene em cachorro">
+            <span>Higiene &amp;<br>cuidados</span>
+          </a>
+        </div>
+
+        <div class="nutrition-content">
+          <img class="doctor-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-50.png?w=1024&amp;allow_lossy=1" alt="Bruna Pinheiro, médica veterinária na Aucare">
+          <div class="nutrition-copy">
+            <p>Cuidar bem de um pet é unir <strong>conhecimento técnico, respeito e carinho.</strong> A AuCare busca oferecer um ambiente acolhedor, com equipe em constante atualização e estrutura pensada para <strong>o bem-estar dos animais e tranquilidade das famílias.</strong></p>
+            <a class="nutrition-cta" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <h2 class="testimonials-title">O que nossos clientes dizem</h2>
+      <div class="testimonials-line"></div>
+      <img class="cat-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos-8.png?w=585&amp;allow_lossy=1" alt="Gato">
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-head">
+          <div class="review-avatar"></div>
+          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+        </div>
+        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+      </article>
+    </section>
+
+    <section class="info-section">
+      <p class="info-kicker">INFORMAÇÕES</p>
+      <h2 class="info-title">Traga seu pet para a <strong>Aucare!</strong></h2>
+      <div class="info-line"></div>
+
+      <div class="info-content">
+        <div>
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.6299779054857!2d-48.347684099999995!3d-10.2106737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x933b35e6fdbfa839%3A0xfdf6d6fc4f46a760!2sAucare!5e0!3m2!1spt-BR!2sbr!4v1778260743278!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a class="maps-button" href="https://www.google.com/maps/search/?api=1&amp;query=Aucare%20Palmas%20TO" target="_blank" rel="noopener noreferrer">Abrir rota no Google Maps</a>
+        </div>
+
+        <div class="info-card">
+          <h3>Informações</h3>
+          <p><strong>Segunda a Sexta</strong><br>7h30 às 18h</p>
+          <p><strong>Sábado</strong><br>7h30 às 12h</p>
+          <p>Telefone<br>63 9 9216-8998</p>
+          <p><strong>Endereço</strong><br>Q. 405 Sul Avenida LO 11 - Plano Diretor Sul, Palmas - TO, 77015-613</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <div>
+          <p><strong>Segunda a Sexta</strong><br>7h30 às 18h</p>
+          <p><strong>Sábado</strong><br>7h30 às 12h</p>
+        </div>
+        <div>
+          <p>Telefone<br>63 9 9216-8998</p>
+          <p>Endereço<br>Q. 405 Sul Avenida LO 11 - Plano Diretor Sul, Palmas - TO, 77015-613</p>
+        </div>
+      </div>
+
+      <div class="footer-center">
+        <img class="footer-logo" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-47.png?w=1024&amp;allow_lossy=1" alt="Aucare">
+        <div class="footer-social">
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""></a>
+          <a href="#" aria-label="Instagram"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-51.png?w=1024&amp;allow_lossy=1" alt=""></a>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rodapé">
+        <div>
+          <a href="#">Início</a><br>
+          <a href="#">Sobre</a><br>
+          <a href="#">Serviços</a><br>
+          <a href="#">Planos de Banho</a>
+        </div>
+        <div>
+          <a href="#">Clínica</a><br>
+          <a href="#">Nutrição</a><br>
+          <a href="#">Depoimentos</a><br>
+          <a href="#">Contato</a>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+    <img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt="">
+  </a>
+</body>
+</html>
