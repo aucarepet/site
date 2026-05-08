@@ -84,7 +84,7 @@
 
     .nav a {
       color: #006fa7;
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 700;
       line-height: 1;
       text-decoration: none;
@@ -968,16 +968,16 @@
       left: 50%;
       bottom: 0;
       z-index: 1;
-      width: 410px;
-      transform: translateX(-50%);
+      width: 455px;
+      transform: translateX(-58%);
     }
 
     .review-card {
       position: absolute;
       z-index: 2;
-      width: 313px;
-      min-height: 153px;
-      padding: 22px 36px 24px 42px;
+      width: 330px;
+      min-height: 166px;
+      padding: 22px 30px 22px 38px;
       border-radius: 29px;
       color: #000000;
       background: #ffffff;
@@ -1018,21 +1018,28 @@
       grid-template-columns: 42px 1fr;
       column-gap: 13px;
       align-items: center;
-      margin-bottom: 26px;
+      margin-bottom: 18px;
     }
 
     .review-avatar {
       width: 42px;
       height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
+      color: #6c3b3b;
       background: #ffc4c4;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1;
     }
 
     .review-name {
       display: block;
       margin-bottom: 2px;
       color: #000000;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       line-height: 1;
     }
@@ -1048,9 +1055,9 @@
     .review-text {
       margin: 0;
       color: #000000;
-      font-size: 19px;
+      font-size: 16px;
       font-weight: 400;
-      line-height: 1.06;
+      line-height: 1.12;
     }
 
     .info-section {
@@ -1284,6 +1291,48 @@
       }
     }
 
+    @keyframes softReveal {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes softRevealSlow {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes softRevealLater {
+      from {
+        opacity: 0;
+        transform: translateY(38px) scale(0.985);
+        filter: blur(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
     @supports (animation-timeline: view()) {
       .services-title,
       .services-line,
@@ -1342,48 +1391,6 @@
       .review-card:nth-of-type(3),
       .review-card:nth-of-type(6) {
         animation-name: softRevealLater;
-      }
-    }
-
-    @keyframes softReveal {
-      from {
-        opacity: 0;
-        transform: translateY(22px) scale(0.985);
-        filter: blur(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes softRevealSlow {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.985);
-        filter: blur(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes softRevealLater {
-      from {
-        opacity: 0;
-        transform: translateY(38px) scale(0.985);
-        filter: blur(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
       }
     }
 
@@ -1539,13 +1546,14 @@
 
       .taxi-image-wrap {
         width: 100%;
-        height: 150px;
+        height: 190px;
       }
 
       .taxi-image {
         left: 50%;
         right: auto;
-        width: 230px;
+        width: 310px;
+        height: 190px;
         transform: translateX(-50%);
       }
 
@@ -1964,7 +1972,7 @@
         <a href="#">Clínica</a>
         <a href="#">Nutrição</a>
         <a href="#">Depoimentos</a>
-        <a class="contact-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Contato</a>
+        <a class="contact-button" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">Contato</a>
       </div>
     </nav>
   </header>
@@ -1972,8 +1980,8 @@
   <main>
     <section class="hero" aria-label="Aucare Pet">
       <div class="hero-frame">
-        <a class="hero-button hero-button-primary" href="#">Agendar Banho e Tosa</a>
-        <a class="hero-button hero-button-secondary" href="#">Agendar Consulta</a>
+        <a class="hero-button hero-button-primary" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">Agendar Banho e Tosa</a>
+        <a class="hero-button hero-button-secondary" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">Agendar Consulta</a>
       </div>
     </section>
 
@@ -1993,7 +2001,7 @@
               <p class="service-text">Banhos e tosas com produtos de <strong>qualidade, cuidado redobrado e atenção aos detalhes.</strong></p>
               <p class="service-text">Seja em um atendimento avulso ou nos nossos planos de banho sem prazo para usar, o seu pet recebe sempre um <strong>cuidado atento e responsável.</strong></p>
               <div class="service-actions">
-                <a class="card-button whatsapp-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Agendar <strong>Banho e<br>Tosa Premium</strong></span></a>
+                <a class="card-button whatsapp-button" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Agendar <strong>Banho e<br>Tosa Premium</strong></span></a>
                 <a class="card-button plan-button" href="#"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/5.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Conhecer <strong>planos<br>de banho</strong></span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
               </div>
             </div>
@@ -2110,8 +2118,8 @@
       <div class="clinic-panel">
         <div class="clinic-panel-inner">
           <div class="clinic-images">
-            <img class="clinic-photo" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Veterinária atendendo cachorro">
-            <img class="clinic-photo" src="https://images.unsplash.com/photo-1581093458791-9d42e0c45f80?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Profissional veterinária examinando pet">
+            <img class="clinic-photo" src="https://lh3.googleusercontent.com/p/AF1QipPyb1r-gjTER6w5giskCWdHqvAT8XhkMxz4ukLH=s680-w680-h510-rw" alt="Veterinária atendendo cachorro">
+            <img class="clinic-photo" src="https://lh3.googleusercontent.com/p/AF1QipO2D0lNGNEe8p1ouQuuZ3sX-YScJPiILaq8GQ4C=s680-w680-h510-rw" alt="Profissional veterinária examinando pet">
           </div>
 
           <div class="clinic-features">
@@ -2165,7 +2173,7 @@
               </div>
             </article>
 
-            <a class="clinic-cta" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+            <a class="clinic-cta" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
           </div>
         </div>
       </div>
@@ -2202,7 +2210,7 @@
           <img class="doctor-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-50.png?w=1024&amp;allow_lossy=1" alt="Bruna Pinheiro, médica veterinária na Aucare">
           <div class="nutrition-copy">
             <p>Cuidar bem de um pet é unir <strong>conhecimento técnico, respeito e carinho.</strong> A AuCare busca oferecer um ambiente acolhedor, com equipe em constante atualização e estrutura pensada para <strong>o bem-estar dos animais e tranquilidade das famílias.</strong></p>
-            <a class="nutrition-cta" href="https://wa.me/" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+            <a class="nutrition-cta" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
           </div>
         </div>
       </div>
@@ -2215,7 +2223,7 @@
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
+          <div class="review-avatar">M</div>
           <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
         </div>
         <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
@@ -2223,42 +2231,42 @@
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
-          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+          <div class="review-avatar">J</div>
+          <div><span class="review-name">Julia Rodrigues</span><span class="review-stars">★★★★★</span></div>
         </div>
-        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+        <p class="review-text">Excelente atendimento! Dra Bruna cuidou muito bem do meu cachorro, atenciosa e carinhosa.</p>
       </article>
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
-          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+          <div class="review-avatar">M</div>
+          <div><span class="review-name">Maria Rodrigues da Silva</span><span class="review-stars">★★★★★</span></div>
         </div>
-        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+        <p class="review-text">Atendimento de excelência, ambiente limpo e climatizado.</p>
       </article>
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
-          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+          <div class="review-avatar">F</div>
+          <div><span class="review-name">Felicio Duarte</span><span class="review-stars">★★★★★</span></div>
         </div>
-        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+        <p class="review-text">Excelente atendimento desde início ao pós serviço!!! Ambiente super limpo e organizado.</p>
       </article>
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
-          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+          <div class="review-avatar">K</div>
+          <div><span class="review-name">Keyla Roberta</span><span class="review-stars">★★★★★</span></div>
         </div>
-        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+        <p class="review-text">Atendimento excelente.</p>
       </article>
 
       <article class="review-card">
         <div class="review-head">
-          <div class="review-avatar"></div>
-          <div><span class="review-name">Mizzi</span><span class="review-stars">★★★★★</span></div>
+          <div class="review-avatar">A</div>
+          <div><span class="review-name">Adiel Leal</span><span class="review-stars">★★★★★</span></div>
         </div>
-        <p class="review-text">Ótimo atendimento e cuidado com meus filhotes!</p>
+        <p class="review-text">Ótima, pessoas educadas e receptivas conosco e nossos pets.</p>
       </article>
     </section>
 
@@ -2302,7 +2310,7 @@
       <div class="footer-center">
         <img class="footer-logo" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-47.png?w=1024&amp;allow_lossy=1" alt="Aucare">
         <div class="footer-social">
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""></a>
+          <a href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="https://www.sesduem.com.br/wp-content/uploads/2018/01/whatsapp-official-logo-png-download.png" alt=""></a>
           <a href="#" aria-label="Instagram"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-51.png?w=1024&amp;allow_lossy=1" alt=""></a>
         </div>
       </div>
@@ -2324,8 +2332,9 @@
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+  <a class="floating-whatsapp" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
     <img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt="">
   </a>
 </body>
 </html>
+
