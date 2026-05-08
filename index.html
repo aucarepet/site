@@ -1386,6 +1386,389 @@
       }
     }
 
+    @media (max-width: 768px) {
+      body {
+        background: #157ca4;
+      }
+
+      .site-header {
+        height: 72px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-group {
+        display: none;
+      }
+
+      .logo-link {
+        position: static;
+        width: 138px;
+        height: 72px;
+        transform: none;
+      }
+
+      .logo {
+        width: 116px;
+      }
+
+      .hero {
+        height: 1000px;
+        margin-top: 72px;
+        background: #157ca4;
+      }
+
+      .hero-frame {
+        width: 100%;
+        max-width: 540px;
+        height: 1000px;
+        background-image: url("https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos-story-do-instagram.png");
+        background-size: cover;
+        background-position: center top;
+      }
+
+      .hero-button {
+        left: 50%;
+        top: auto;
+        width: min(74vw, 365px);
+        height: 64px;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        font-size: clamp(24px, 6.2vw, 34px);
+        line-height: 1.05;
+      }
+
+      .hero-button:hover {
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .hero-button-primary {
+        bottom: 116px;
+        width: min(74vw, 365px);
+      }
+
+      .hero-button-secondary {
+        bottom: 28px;
+        width: min(74vw, 365px);
+        border-width: 3px;
+      }
+
+      .services-section,
+      .plans-section,
+      .clinic-section,
+      .nutrition-section-full,
+      .info-section {
+        padding-top: 64px;
+        padding-bottom: 72px;
+      }
+
+      .services-inner,
+      .plans-inner,
+      .clinic-intro,
+      .nutrition-inner,
+      .info-content,
+      .footer-inner {
+        width: calc(100% - 32px);
+      }
+
+      .services-title,
+      .plans-title,
+      .clinic-title,
+      .nutrition-title,
+      .testimonials-title,
+      .info-title {
+        width: 100%;
+        font-size: clamp(30px, 8vw, 38px);
+        line-height: 1.08;
+      }
+
+      .services-line,
+      .plans-line,
+      .clinic-title-line,
+      .nutrition-title-line,
+      .testimonials-line,
+      .info-line {
+        width: 76%;
+        margin-top: 18px;
+        margin-bottom: 42px;
+      }
+
+      .services-grid,
+      .plans-grid,
+      .product-grid,
+      .nutrition-content,
+      .clinic-panel-inner,
+      .info-content,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .plans-grid {
+        gap: 28px;
+      }
+
+      .service-card,
+      .plan-card {
+        width: min(100%, 348px);
+        margin: 0 auto;
+      }
+
+      .service-content {
+        padding: 32px 34px 30px;
+      }
+
+      .service-text,
+      .service-list {
+        font-size: 15px;
+      }
+
+      .taxi-banner {
+        grid-template-columns: 1fr;
+        width: 100%;
+        min-height: 0;
+        margin-top: 42px;
+        text-align: center;
+      }
+
+      .taxi-image-wrap {
+        width: 100%;
+        height: 150px;
+      }
+
+      .taxi-image {
+        left: 50%;
+        right: auto;
+        width: 230px;
+        transform: translateX(-50%);
+      }
+
+      .taxi-text {
+        padding: 4px 28px 28px;
+      }
+
+      .taxi-text h3 {
+        font-size: 24px;
+      }
+
+      .taxi-text p {
+        font-size: 16px;
+        line-height: 1.22;
+      }
+
+      .plans-subtitle {
+        width: min(100%, 360px);
+        margin-bottom: 48px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        line-height: 1.45;
+      }
+
+      .plan-card {
+        min-height: 470px;
+        padding: 22px 36px 40px;
+      }
+
+      .plan-features li {
+        white-space: normal;
+      }
+
+      .clinic-description {
+        font-size: 19px;
+        line-height: 1.35;
+      }
+
+      .clinic-panel {
+        padding: 46px 0 64px;
+        border-radius: 44px 44px 0 0;
+      }
+
+      .clinic-panel-inner {
+        gap: 32px;
+      }
+
+      .clinic-images {
+        gap: 24px;
+      }
+
+      .clinic-photo {
+        height: 300px;
+        border-radius: 18px;
+      }
+
+      .clinic-feature {
+        grid-template-columns: 76px 1fr;
+        min-height: 128px;
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      .clinic-feature-icon-wrap {
+        width: 62px;
+        height: 62px;
+      }
+
+      .clinic-feature-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .clinic-feature-text h3 {
+        font-size: 21px;
+      }
+
+      .clinic-feature-text p {
+        font-size: 15px;
+      }
+
+      .clinic-cta,
+      .nutrition-cta,
+      .maps-button {
+        width: 100%;
+        height: 68px;
+        gap: 18px;
+        border-radius: 18px;
+        font-size: clamp(22px, 6vw, 28px);
+      }
+
+      .clinic-cta img,
+      .nutrition-cta img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 70px;
+      }
+
+      .product-card {
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-radius: 28px;
+      }
+
+      .product-card span {
+        left: 20px;
+        bottom: 20px;
+        font-size: 17px;
+      }
+
+      .doctor-image {
+        width: 100%;
+        max-width: 540px;
+      }
+
+      .nutrition-copy {
+        padding-top: 0;
+        text-align: left;
+      }
+
+      .nutrition-copy p {
+        margin-bottom: 28px;
+        font-size: 22px;
+        line-height: 1.32;
+      }
+
+      .testimonials-section {
+        min-height: 0;
+        padding: 64px 16px 72px;
+      }
+
+      .cat-image {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: min(78vw, 330px);
+        margin: 20px auto 26px;
+        transform: none;
+      }
+
+      .review-card {
+        position: relative;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100%;
+        max-width: 360px;
+        min-height: 0;
+        margin: 18px auto;
+        padding: 22px 28px;
+        border-radius: 24px;
+      }
+
+      .review-head {
+        margin-bottom: 18px;
+      }
+
+      .review-text {
+        font-size: 17px;
+      }
+
+      .info-section {
+        padding-top: 68px;
+      }
+
+      .info-content {
+        gap: 34px;
+      }
+
+      .map-frame {
+        width: 100%;
+        height: 330px;
+        border-radius: 22px;
+      }
+
+      .info-card {
+        min-height: 0;
+        padding: 42px 32px;
+        border-radius: 24px;
+      }
+
+      .info-card h3 {
+        margin-bottom: 34px;
+        font-size: 30px;
+      }
+
+      .info-card p {
+        font-size: 19px;
+        line-height: 1.15;
+      }
+
+      .footer {
+        padding: 42px 0 96px;
+      }
+
+      .footer-inner,
+      .footer-info,
+      .footer-nav {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+
+      .footer-center {
+        order: -1;
+      }
+
+      .floating-whatsapp {
+        right: 18px;
+        bottom: 18px;
+        width: 58px;
+        height: 58px;
+      }
+
+      .floating-whatsapp img {
+        width: 31px;
+        height: 31px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
