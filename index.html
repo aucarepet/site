@@ -709,12 +709,77 @@
       gap: 53px;
     }
 
-    .clinic-photo {
+    .clinic-reel {
+      width: 563px;
+      height: 1049px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #0d73a6;
+    }
+
+    .clinic-reel iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .clinic-photo,
+    .clinic-carousel {
       width: 563px;
       height: 498px;
       display: block;
       border-radius: 22px;
       object-fit: cover;
+    }
+
+    .clinic-carousel {
+      position: relative;
+      overflow: hidden;
+      background: #0d73a6;
+    }
+
+    .clinic-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 900ms ease, transform 1800ms ease;
+    }
+
+    .clinic-slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .clinic-slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .clinic-slide figcaption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22px;
+      z-index: 1;
+      padding: 14px 18px;
+      border-radius: 15px;
+      color: #ffffff;
+      background: rgba(13, 115, 166, 0.82);
+      backdrop-filter: blur(8px);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    .clinic-slide::after {
+      content: "";
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.36) 100%);
     }
 
     .clinic-features {
@@ -1347,6 +1412,7 @@
       .clinic-title-line,
       .clinic-description,
       .clinic-photo,
+      .clinic-carousel,
       .clinic-feature,
       .clinic-cta,
       .nutrition-title,
@@ -1605,9 +1671,23 @@
         gap: 24px;
       }
 
-      .clinic-photo {
+      .clinic-photo,
+      .clinic-reel,
+      .clinic-carousel {
         height: 300px;
         border-radius: 18px;
+      }
+
+      .clinic-reel {
+        height: 640px;
+      }
+
+      .clinic-slide figcaption {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        padding: 12px 14px;
+        font-size: 14px;
       }
 
       .clinic-feature {
@@ -1820,7 +1900,9 @@
         gap: 38px;
       }
 
-      .clinic-photo {
+      .clinic-photo,
+      .clinic-reel,
+      .clinic-carousel {
         width: 100%;
       }
 
@@ -2045,7 +2127,7 @@
 
         <div class="taxi-banner">
           <div class="taxi-image-wrap">
-            <img class="taxi-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos-12.png?w=1024&allow_lossy=1" alt="Dois pets para serviço de táxi dog">
+            <img class="taxi-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/fundoos-4.png?w=1024&amp;allow_lossy=1" alt="Dois pets para serviço de táxi dog">
           </div>
           <div class="taxi-text">
             <h3>Sem tempo para <strong>levar ou buscar</strong> seu pet na Aucare?</h3>
@@ -2118,8 +2200,9 @@
       <div class="clinic-panel">
         <div class="clinic-panel-inner">
           <div class="clinic-images">
-            <img class="clinic-photo" src="https://lh3.googleusercontent.com/p/AF1QipPyb1r-gjTER6w5giskCWdHqvAT8XhkMxz4ukLH=s680-w680-h510-rw" alt="Veterinária atendendo cachorro">
-            <img class="clinic-photo" src="https://lh3.googleusercontent.com/p/AF1QipO2D0lNGNEe8p1ouQuuZ3sX-YScJPiILaq8GQ4C=s680-w680-h510-rw" alt="Profissional veterinária examinando pet">
+            <div class="clinic-reel">
+              <iframe src="https://www.instagram.com/reel/DVwKISggHHR/embed" title="Reels mostrando os ambientes da Aucare" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            </div>
           </div>
 
           <div class="clinic-features">
@@ -2335,6 +2418,23 @@
   <a class="floating-whatsapp" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
     <img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt="">
   </a>
+
+  <script>
+    document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
+      const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
+      let activeIndex = 0;
+
+      if (slides.length <= 1) {
+        return;
+      }
+
+      setInterval(() => {
+        slides[activeIndex].classList.remove("is-active");
+        activeIndex = (activeIndex + 1) % slides.length;
+        slides[activeIndex].classList.add("is-active");
+      }, 4200 + carouselIndex * 450);
+    });
+  </script>
 </body>
 </html>
 
