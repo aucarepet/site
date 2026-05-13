@@ -2642,57 +2642,127 @@
     <img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt="">
   </a>
 
-  <script>
-    document.querySelectorAll(".info-gallery").forEach((gallery) => {
-      const track = gallery.querySelector(".info-gallery-track");
-      const prev = gallery.querySelector(".info-gallery-button.prev");
-      const next = gallery.querySelector(".info-gallery-button.next");
+<script>
+  /* ── Galeria (original mantido) ── */
+  document.querySelectorAll(".info-gallery").forEach((gallery) => {
+    const track = gallery.querySelector(".info-gallery-track");
+    const prev  = gallery.querySelector(".info-gallery-button.prev");
+    const next  = gallery.querySelector(".info-gallery-button.next");
 
-      const getStep = () => {
-        const card = track.querySelector(".info-gallery-card");
-        if (!card) return track.clientWidth;
-        const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0);
-        return card.getBoundingClientRect().width + gap;
-      };
+    const getStep = () => {
+      const card = track.querySelector(".info-gallery-card");
+      if (!card) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0);
+      return card.getBoundingClientRect().width + gap;
+    };
 
-      const go = (direction = 1) => {
-        const maxScroll = track.scrollWidth - track.clientWidth - 4;
-        if (direction > 0 && track.scrollLeft >= maxScroll) {
-          track.scrollTo({ left: 0, behavior: "smooth" });
-          return;
-        }
-        if (direction < 0 && track.scrollLeft <= 4) {
-          track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
-          return;
-        }
-        track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
-      };
+    const go = (direction = 1) => {
+      const maxScroll = track.scrollWidth - track.clientWidth - 4;
+      if (direction > 0 && track.scrollLeft >= maxScroll) {
+        track.scrollTo({ left: 0, behavior: "smooth" }); return;
+      }
+      if (direction < 0 && track.scrollLeft <= 4) {
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" }); return;
+      }
+      track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
+    };
 
-      prev.addEventListener("click", () => go(-1));
-      next.addEventListener("click", () => go(1));
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
 
-      let auto = setInterval(() => go(1), 4200);
-      gallery.addEventListener("mouseenter", () => clearInterval(auto));
-      gallery.addEventListener("mouseleave", () => {
-        auto = setInterval(() => go(1), 4200);
+    let auto = setInterval(() => go(1), 4200);
+    gallery.addEventListener("mouseenter", () => clearInterval(auto));
+    gallery.addEventListener("mouseleave", () => { auto = setInterval(() => go(1), 4200); });
+  });
+
+  /* ── Carousel clínica (original mantido) ── */
+  document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
+    const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
+    let activeIndex = 0;
+    if (slides.length <= 1) return;
+    setInterval(() => {
+      slides[activeIndex].classList.remove("is-active");
+      activeIndex = (activeIndex + 1) % slides.length;
+      slides[activeIndex].classList.add("is-active");
+    }, 4200 + carouselIndex * 450);
+  });
+
+  /* ══════════════════════════════════════════
+     CONVERSÕES — GOOGLE ADS
+     Conta: AW-18158129663
+     ══════════════════════════════════════════ */
+
+  const AW_ID = 'AW-18158129663';
+
+  const CONV = {
+    maps:        'I-hKCNKMtawcEP-jvNJD',
+    banhoTosa:   'wPcrCJfDzKwcEP-jvNJD',
+    planosBanho: '9WjHCKu2zKwcEP-jvNJD',
+    outrosWpp:   'EtuRCOTHtKwcEP-jvNJD',
+  };
+
+  function fireConversion(label, desc) {
+    gtag('event', 'conversion', { send_to: AW_ID + '/' + label });
+    console.log('[Conversão]', desc);
+  }
+
+  function trackClicks(selectors, label, desc) {
+    selectors.forEach(function(selector) {
+      document.querySelectorAll(selector).forEach(function(el) {
+        el.addEventListener('click', function() {
+          fireConversion(label, desc);
+        });
       });
     });
+  }
 
-    document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
-      const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
-      let activeIndex = 0;
+  /* 1. Abrir Maps */
+  trackClicks(
+    ['.maps-button'],
+    CONV.maps,
+    'Abrir Google Maps'
+  );
 
-      if (slides.length <= 1) {
-        return;
-      }
+  /* 2. Agendar Banho e Tosa */
+  trackClicks(
+    [
+      '.hero-button-primary',
+      '.service-card.grooming-card .whatsapp-button',
+    ],
+    CONV.banhoTosa,
+    'Agendar Banho e Tosa'
+  );
 
-      setInterval(() => {
-        slides[activeIndex].classList.remove("is-active");
-        activeIndex = (activeIndex + 1) % slides.length;
-        slides[activeIndex].classList.add("is-active");
-      }, 4200 + carouselIndex * 450);
-    });
-  </script>
+  /* 3. Saiba Mais — Planos de Banho */
+  trackClicks(
+    [
+      '.plans-grid .plan-card:nth-child(1) .plan-more-button',
+      '.plans-grid .plan-card:nth-child(2) .plan-more-button',
+      '.plans-grid .plan-card:nth-child(3) .plan-more-button',
+    ],
+    CONV.planosBanho,
+    'Saiba Mais — Planos de Banho'
+  );
+
+  /* 4. Outros WhatsApp */
+  trackClicks(
+    [
+      '.hero-button-secondary',
+      '.service-card.clinic-card .more-button',
+      '.service-card.nutrition-card .more-button',
+      '.clinic-cta',
+      '.nutrition-cta',
+      '.product-card:nth-child(1)',
+      '.product-card:nth-child(2)',
+      '.product-card:nth-child(3)',
+      '.product-card:nth-child(4)',
+      '.floating-whatsapp',
+      '.footer-social a[href*="wa.me"]',
+    ],
+    CONV.outrosWpp,
+    'Outros WhatsApp'
+  );
+
+</script>
 </body>
 </html>
-
