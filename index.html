@@ -1,17 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18158129663"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18158129663');
-</script>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aucare Pet</title>
@@ -1294,10 +1284,19 @@
       color: #0878aa;
       background: rgba(255, 255, 255, 0.94);
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
-      font-size: 30px;
+      font-size: 0;
       line-height: 1;
       cursor: pointer;
       transform: translateY(-50%);
+    }
+
+    .info-gallery-button::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      display: block;
+      border-top: 2.5px solid currentColor;
+      border-right: 2.5px solid currentColor;
     }
 
     .info-gallery-button:hover {
@@ -1308,8 +1307,18 @@
       left: 18px;
     }
 
+    .info-gallery-button.prev::before {
+      margin-left: 4px;
+      transform: rotate(-135deg);
+    }
+
     .info-gallery-button.next {
       right: 18px;
+    }
+
+    .info-gallery-button.next::before {
+      margin-right: 4px;
+      transform: rotate(45deg);
     }
 
     .info-content {
@@ -1979,31 +1988,53 @@
       }
 
       .info-gallery {
+        width: min(calc(100% - 32px), 390px);
+        overflow: hidden;
         margin-bottom: 42px;
         border-radius: 24px;
       }
 
       .info-gallery::before,
       .info-gallery::after {
-        width: 34px;
+        display: none;
       }
 
       .info-gallery-track {
-        gap: 16px;
-        animation-duration: 38s;
+        gap: 0;
+        scroll-padding: 0;
       }
 
       .info-gallery-card {
         width: 100%;
+        flex: 0 0 100%;
         height: auto;
         aspect-ratio: 4 / 3;
-        border-radius: 20px;
+        border-radius: 24px;
+        box-shadow: none;
+        scroll-snap-align: center;
       }
 
       .info-gallery-button {
-        width: 40px;
-        height: 40px;
-        font-size: 25px;
+        width: 42px;
+        height: 42px;
+        color: #0878aa;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.13);
+      }
+
+      .info-gallery-button.prev {
+        left: 10px;
+      }
+
+      .info-gallery-button.next {
+        right: 10px;
+      }
+
+      .info-gallery-card span {
+        left: 16px;
+        right: 16px;
+        bottom: 14px;
+        font-size: 14px;
       }
 
       .info-content {
@@ -2223,6 +2254,10 @@
 
       .info-content {
         grid-template-columns: 1fr;
+      }
+
+      .info-gallery {
+        width: min(calc(100% - 32px), 390px);
       }
 
       .info-line {
@@ -2642,127 +2677,61 @@
     <img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt="">
   </a>
 
-<script>
-  /* ── Galeria (original mantido) ── */
-  document.querySelectorAll(".info-gallery").forEach((gallery) => {
-    const track = gallery.querySelector(".info-gallery-track");
-    const prev  = gallery.querySelector(".info-gallery-button.prev");
-    const next  = gallery.querySelector(".info-gallery-button.next");
+  <script>
+    document.querySelectorAll(".info-gallery").forEach((gallery) => {
+      const track = gallery.querySelector(".info-gallery-track");
+      const prev = gallery.querySelector(".info-gallery-button.prev");
+      const next = gallery.querySelector(".info-gallery-button.next");
+      const cards = Array.from(track.querySelectorAll(".info-gallery-card"));
+      let activeIndex = 0;
 
-    const getStep = () => {
-      const card = track.querySelector(".info-gallery-card");
-      if (!card) return track.clientWidth;
-      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0);
-      return card.getBoundingClientRect().width + gap;
-    };
+      const syncIndex = () => {
+        if (!cards.length) return;
+        const current = track.scrollLeft + track.clientWidth / 2;
+        activeIndex = cards.reduce((closestIndex, card, index) => {
+          const closestCard = cards[closestIndex];
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const closestCenter = closestCard.offsetLeft + closestCard.offsetWidth / 2;
+          return Math.abs(cardCenter - current) < Math.abs(closestCenter - current) ? index : closestIndex;
+        }, 0);
+      };
 
-    const go = (direction = 1) => {
-      const maxScroll = track.scrollWidth - track.clientWidth - 4;
-      if (direction > 0 && track.scrollLeft >= maxScroll) {
-        track.scrollTo({ left: 0, behavior: "smooth" }); return;
-      }
-      if (direction < 0 && track.scrollLeft <= 4) {
-        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" }); return;
-      }
-      track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
-    };
+      const go = (direction = 1) => {
+        if (!cards.length) return;
+        syncIndex();
+        activeIndex = (activeIndex + direction + cards.length) % cards.length;
+        track.scrollTo({ left: cards[activeIndex].offsetLeft, behavior: "smooth" });
+      };
 
-    prev.addEventListener("click", () => go(-1));
-    next.addEventListener("click", () => go(1));
+      prev.addEventListener("click", () => go(-1));
+      next.addEventListener("click", () => go(1));
+      track.addEventListener("scroll", () => {
+        window.clearTimeout(track._galleryScrollTimer);
+        track._galleryScrollTimer = window.setTimeout(syncIndex, 120);
+      });
 
-    let auto = setInterval(() => go(1), 4200);
-    gallery.addEventListener("mouseenter", () => clearInterval(auto));
-    gallery.addEventListener("mouseleave", () => { auto = setInterval(() => go(1), 4200); });
-  });
-
-  /* ── Carousel clínica (original mantido) ── */
-  document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
-    const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
-    let activeIndex = 0;
-    if (slides.length <= 1) return;
-    setInterval(() => {
-      slides[activeIndex].classList.remove("is-active");
-      activeIndex = (activeIndex + 1) % slides.length;
-      slides[activeIndex].classList.add("is-active");
-    }, 4200 + carouselIndex * 450);
-  });
-
-  /* ══════════════════════════════════════════
-     CONVERSÕES — GOOGLE ADS
-     Conta: AW-18158129663
-     ══════════════════════════════════════════ */
-
-  const AW_ID = 'AW-18158129663';
-
-  const CONV = {
-    maps:        'I-hKCNKMtawcEP-jvNJD',
-    banhoTosa:   'wPcrCJfDzKwcEP-jvNJD',
-    planosBanho: '9WjHCKu2zKwcEP-jvNJD',
-    outrosWpp:   'EtuRCOTHtKwcEP-jvNJD',
-  };
-
-  function fireConversion(label, desc) {
-    gtag('event', 'conversion', { send_to: AW_ID + '/' + label });
-    console.log('[Conversão]', desc);
-  }
-
-  function trackClicks(selectors, label, desc) {
-    selectors.forEach(function(selector) {
-      document.querySelectorAll(selector).forEach(function(el) {
-        el.addEventListener('click', function() {
-          fireConversion(label, desc);
-        });
+      let auto = setInterval(() => go(1), 4200);
+      gallery.addEventListener("mouseenter", () => clearInterval(auto));
+      gallery.addEventListener("mouseleave", () => {
+        auto = setInterval(() => go(1), 4200);
       });
     });
-  }
 
-  /* 1. Abrir Maps */
-  trackClicks(
-    ['.maps-button'],
-    CONV.maps,
-    'Abrir Google Maps'
-  );
+    document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
+      const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
+      let activeIndex = 0;
 
-  /* 2. Agendar Banho e Tosa */
-  trackClicks(
-    [
-      '.hero-button-primary',
-      '.service-card.grooming-card .whatsapp-button',
-    ],
-    CONV.banhoTosa,
-    'Agendar Banho e Tosa'
-  );
+      if (slides.length <= 1) {
+        return;
+      }
 
-  /* 3. Saiba Mais — Planos de Banho */
-  trackClicks(
-    [
-      '.plans-grid .plan-card:nth-child(1) .plan-more-button',
-      '.plans-grid .plan-card:nth-child(2) .plan-more-button',
-      '.plans-grid .plan-card:nth-child(3) .plan-more-button',
-    ],
-    CONV.planosBanho,
-    'Saiba Mais — Planos de Banho'
-  );
-
-  /* 4. Outros WhatsApp */
-  trackClicks(
-    [
-      '.hero-button-secondary',
-      '.service-card.clinic-card .more-button',
-      '.service-card.nutrition-card .more-button',
-      '.clinic-cta',
-      '.nutrition-cta',
-      '.product-card:nth-child(1)',
-      '.product-card:nth-child(2)',
-      '.product-card:nth-child(3)',
-      '.product-card:nth-child(4)',
-      '.floating-whatsapp',
-      '.footer-social a[href*="wa.me"]',
-    ],
-    CONV.outrosWpp,
-    'Outros WhatsApp'
-  );
-
-</script>
+      setInterval(() => {
+        slides[activeIndex].classList.remove("is-active");
+        activeIndex = (activeIndex + 1) % slides.length;
+        slides[activeIndex].classList.add("is-active");
+      }, 4200 + carouselIndex * 450);
+    });
+  </script>
 </body>
 </html>
+
