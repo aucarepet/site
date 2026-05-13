@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aucare Pet</title>
-  <link rel="icon" href="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-54.png?w=1024&amp;allow_lossy=1">
-  <link rel="apple-touch-icon" href="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-54.png?w=1024&amp;allow_lossy=1">
+  <link rel="icon" href="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-56.png?w=1024&amp;allow_lossy=1">
+  <link rel="apple-touch-icon" href="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-56.png?w=1024&amp;allow_lossy=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1186,8 +1186,120 @@
     .info-line {
       width: 640px;
       height: 2px;
-      margin: 26px auto 72px;
+      margin: 26px auto 48px;
       background: linear-gradient(90deg, #f8f8f8 0%, rgba(255, 255, 255, 0.95) 50%, #f8f8f8 100%);
+    }
+
+    .info-gallery {
+      width: 1212px;
+      margin: 0 auto 70px;
+      overflow: hidden;
+      border-radius: 32px;
+      position: relative;
+    }
+
+    .info-gallery::before,
+    .info-gallery::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 90px;
+      pointer-events: none;
+    }
+
+    .info-gallery::before {
+      left: 0;
+      background: linear-gradient(90deg, #f8f8f8, rgba(248, 248, 248, 0));
+    }
+
+    .info-gallery::after {
+      right: 0;
+      background: linear-gradient(270deg, #f8f8f8, rgba(248, 248, 248, 0));
+    }
+
+    .info-gallery-track {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .info-gallery-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .info-gallery-card {
+      position: relative;
+      width: 258px;
+      height: 188px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+      background: #0d73a6;
+      scroll-snap-align: start;
+    }
+
+    .info-gallery-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .info-gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 40% 0 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+    }
+
+    .info-gallery-card span {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 1;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.12;
+    }
+
+    .info-gallery-button {
+      position: absolute;
+      top: 50%;
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      color: #0878aa;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+
+    .info-gallery-button:hover {
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .info-gallery-button.prev {
+      left: 18px;
+    }
+
+    .info-gallery-button.next {
+      right: 18px;
     }
 
     .info-content {
@@ -1589,6 +1701,7 @@
       .plans-inner,
       .clinic-intro,
       .nutrition-inner,
+      .info-gallery,
       .info-content,
       .footer-inner {
         width: calc(100% - 32px);
@@ -1658,16 +1771,18 @@
 
       .taxi-image-wrap {
         width: 100%;
-        height: 235px;
+        height: auto;
+        aspect-ratio: 3 / 1;
+        background: transparent;
       }
 
       .taxi-image {
-        content: url("https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-54.png?w=1024&allow_lossy=1");
+        content: url("https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-57.png?w=1024&allow_lossy=1");
         left: 0;
         right: auto;
         width: 100%;
-        height: 235px;
-        object-fit: cover;
+        height: 100%;
+        object-fit: contain;
         object-position: center bottom;
         transform: none;
       }
@@ -1853,6 +1968,34 @@
         padding-top: 68px;
       }
 
+      .info-gallery {
+        margin-bottom: 42px;
+        border-radius: 24px;
+      }
+
+      .info-gallery::before,
+      .info-gallery::after {
+        width: 34px;
+      }
+
+      .info-gallery-track {
+        gap: 16px;
+        animation-duration: 38s;
+      }
+
+      .info-gallery-card {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+      }
+
+      .info-gallery-button {
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+      }
+
       .info-content {
         gap: 34px;
       }
@@ -1970,6 +2113,10 @@
 
       .info-content,
       .footer-inner {
+        width: calc(100% - 48px);
+      }
+
+      .info-gallery {
         width: calc(100% - 48px);
       }
 
@@ -2111,8 +2258,8 @@
   <main>
     <section class="hero" id="inicio" aria-label="Aucare Pet">
       <div class="hero-frame">
-        <a class="hero-button hero-button-primary" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">Agendar Banho e Tosa</a>
-        <a class="hero-button hero-button-secondary" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">Agendar Consulta</a>
+        <a class="hero-button hero-button-primary" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Quero%20agendar%20banho%20e%20tosa%20para%20meu%20pet." target="_blank" rel="noopener noreferrer">Agendar Banho e Tosa</a>
+        <a class="hero-button hero-button-secondary" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20veterin%C3%A1ria%20para%20meu%20pet." target="_blank" rel="noopener noreferrer">Agendar Consulta</a>
       </div>
     </section>
 
@@ -2132,8 +2279,8 @@
               <p class="service-text">Banhos e tosas com produtos de <strong>qualidade, cuidado redobrado e atenção aos detalhes.</strong></p>
               <p class="service-text">Seja em um atendimento avulso ou nos nossos planos de banho sem prazo para usar, o seu pet recebe sempre um <strong>cuidado atento e responsável.</strong></p>
               <div class="service-actions">
-                <a class="card-button whatsapp-button" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Agendar <strong>Banho e<br>Tosa Premium</strong></span></a>
-                <a class="card-button plan-button" href="#"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/5.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Conhecer <strong>planos<br>de banho</strong></span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+                <a class="card-button whatsapp-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Quero%20agendar%20Banho%20e%20Tosa%20Premium%20para%20meu%20pet." target="_blank" rel="noopener noreferrer"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Agendar <strong>Banho e<br>Tosa Premium</strong></span></a>
+                <a class="card-button plan-button" href="#planos"><img class="button-icon" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/5.png?w=1024&amp;allow_lossy=1" alt=""><span class="button-text">Conhecer <strong>planos<br>de banho</strong></span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
               </div>
             </div>
           </article>
@@ -2152,7 +2299,7 @@
                 <li>Dermatologia, oftalmologia e oncologia com profissionais parceiros</li>
                 <li>Internação para casos infecciosos e não infecciosos</li>
               </ul>
-              <a class="card-button more-button" href="#"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+              <a class="card-button more-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20cl%C3%ADnica%20veterin%C3%A1ria%20da%20Aucare." target="_blank" rel="noopener noreferrer"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
             </div>
           </article>
 
@@ -2169,7 +2316,7 @@
                 <li>Shampoos e itens de higiene</li>
                 <li>Medicações básicas, com orientação veterinária</li>
               </ul>
-              <a class="card-button more-button" href="#"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
+              <a class="card-button more-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20nutri%C3%A7%C3%A3o%20e%20produtos%20da%20Aucare." target="_blank" rel="noopener noreferrer"><span>SAIBA MAIS</span><img class="button-arrow" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-48.png?w=1024&amp;allow_lossy=1" alt=""></a>
             </div>
           </article>
         </div>
@@ -2204,7 +2351,7 @@
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">1 máscara de hidratação</li>
             </ul>
-            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+            <a class="plan-more-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20de%204%20banhos%20da%20Aucare." target="_blank" rel="noopener noreferrer">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
           </article>
 
           <article class="plan-card">
@@ -2218,7 +2365,7 @@
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">4 máscaras de hidratação</li>
             </ul>
-            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+            <a class="plan-more-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20de%2012%20banhos%20da%20Aucare." target="_blank" rel="noopener noreferrer">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
           </article>
 
           <article class="plan-card">
@@ -2232,7 +2379,7 @@
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">Corte de unhas</li>
               <li><img class="plan-check" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4-1.png?w=1024&amp;allow_lossy=1" alt="">9 máscaras de hidratação</li>
             </ul>
-            <a class="plan-more-button" href="#">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
+            <a class="plan-more-button" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20de%2024%20banhos%20da%20Aucare." target="_blank" rel="noopener noreferrer">SAIBA MAIS<img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-49.png?w=1024&amp;allow_lossy=1" alt=""></a>
           </article>
         </div>
       </div>
@@ -2281,7 +2428,7 @@
               </div>
               <div class="clinic-feature-text">
                 <h3>Procedimentos</h3>
-                <p>Procedimentos veterinários realizados em ambiente preparado e controlado, com monitoramento e foco em segurança.</p>
+                <p>Procedimentos veterinários e cirúrgicos em centro cirúrgico preparado, com monitoramento e foco em segurança.</p>
               </div>
             </article>
 
@@ -2291,7 +2438,7 @@
               </div>
               <div class="clinic-feature-text">
                 <h3>Especialidades</h3>
-                <p>Dermatologia, oftalmologia e oncologia com profissionais parceiros, mediante avaliação prévia e agendamento.</p>
+                <p>Encaminhamento para especialidades veterinárias conforme a necessidade do pet, com profissionais parceiros e agendamento prévio.</p>
               </div>
             </article>
 
@@ -2305,7 +2452,7 @@
               </div>
             </article>
 
-            <a class="clinic-cta" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+            <a class="clinic-cta" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20veterin%C3%A1ria%20para%20meu%20pet." target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
           </div>
         </div>
       </div>
@@ -2317,32 +2464,32 @@
         <div class="nutrition-title-line"></div>
 
         <div class="product-grid">
-          <a class="product-card" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">
+          <a class="product-card" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20ra%C3%A7%C3%B5es%20dispon%C3%ADveis%20na%20Aucare." target="_blank" rel="noopener noreferrer">
             <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Gato comendo ração">
             <span>Rações</span>
           </a>
 
-          <a class="product-card" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">
+          <a class="product-card" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20petiscos%20e%20brinquedos%20dispon%C3%ADveis%20na%20Aucare." target="_blank" rel="noopener noreferrer">
             <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cachorro brincando">
             <span>Petiscos e<br>Brinquedos</span>
           </a>
 
-          <a class="product-card" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">
+          <a class="product-card" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20medica%C3%A7%C3%B5es%20dispon%C3%ADveis%20na%20Aucare." target="_blank" rel="noopener noreferrer">
             <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cachorro em atendimento">
             <span>Medicações</span>
           </a>
 
-          <a class="product-card" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer">
+          <a class="product-card" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20itens%20de%20higiene%20e%20cuidados%20dispon%C3%ADveis%20na%20Aucare." target="_blank" rel="noopener noreferrer">
             <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&amp;fit=crop&amp;w=520&amp;q=80" alt="Cuidado de higiene em cachorro">
             <span>Higiene &amp;<br>cuidados</span>
           </a>
         </div>
 
         <div class="nutrition-content">
-          <img class="doctor-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-52-1.png?w=1024&amp;allow_lossy=1" alt="Bruna Pinheiro, médica veterinária na Aucare">
+          <img class="doctor-image" src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/design-sem-nome-55.png" alt="Bruna Pinheiro, médica veterinária na Aucare">
           <div class="nutrition-copy">
             <p>Cuidar bem de um pet é unir <strong>conhecimento técnico, respeito e carinho.</strong> A AuCare busca oferecer um ambiente acolhedor, com equipe em constante atualização e estrutura pensada para <strong>o bem-estar dos animais e tranquilidade das famílias.</strong></p>
-            <a class="nutrition-cta" href="https://wa.me/5563992168998" target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
+            <a class="nutrition-cta" href="https://wa.me/5563992168998?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20veterin%C3%A1ria%20para%20meu%20pet." target="_blank" rel="noopener noreferrer"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/4.png?w=1024&amp;allow_lossy=1" alt=""><span>Agendar uma <strong>Consulta</strong></span></a>
           </div>
         </div>
       </div>
@@ -2407,6 +2554,23 @@
       <h2 class="info-title">Traga seu pet para a <strong>Aucare!</strong></h2>
       <div class="info-line"></div>
 
+      <div class="info-gallery" aria-label="Ambientes da Aucare">
+        <button class="info-gallery-button prev" type="button" aria-label="Foto anterior">‹</button>
+        <div class="info-gallery-track">
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.26.jpeg?w=576&amp;allow_lossy=1" alt="Fachada da Aucare"><span>Fachada acolhedora da Aucare</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.24-1.jpeg?w=576&amp;allow_lossy=1" alt="Ambiente interno da Aucare"><span>Ambientes internos organizados</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.24.jpeg?w=576&amp;allow_lossy=1" alt="Estrutura da clínica"><span>Estrutura para atendimento veterinário</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.25-2.jpeg?w=576&amp;allow_lossy=1" alt="Espaço de cuidado"><span>Espaços pensados para cuidado</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.25-1.jpeg?w=576&amp;allow_lossy=1" alt="Rotina da Aucare"><span>Rotina com atenção aos detalhes</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.25.jpeg?w=576&amp;allow_lossy=1" alt="Atendimento na Aucare"><span>Atendimento próximo e responsável</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.26-3.jpeg?w=576&amp;allow_lossy=1" alt="Equipe e pets"><span>Convivência com pets em segurança</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.26-2.jpeg?w=576&amp;allow_lossy=1" alt="Cuidado veterinário"><span>Cuidado veterinário humanizado</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.27-1.jpeg?w=576&amp;allow_lossy=1" alt="Acompanhamento de pets"><span>Acompanhamento para cada fase</span></figure>
+          <figure class="info-gallery-card"><img src="https://aucarepet.wordpress.com/wp-content/uploads/2026/05/whatsapp-image-2026-05-12-at-10.13.26-1.jpeg?w=576&amp;allow_lossy=1" alt="Experiência Aucare"><span>Experiência acolhedora para famílias</span></figure>
+        </div>
+        <button class="info-gallery-button next" type="button" aria-label="Próxima foto">›</button>
+      </div>
+
       <div class="info-content">
         <div>
           <div class="map-frame">
@@ -2469,6 +2633,41 @@
   </a>
 
   <script>
+    document.querySelectorAll(".info-gallery").forEach((gallery) => {
+      const track = gallery.querySelector(".info-gallery-track");
+      const prev = gallery.querySelector(".info-gallery-button.prev");
+      const next = gallery.querySelector(".info-gallery-button.next");
+
+      const getStep = () => {
+        const card = track.querySelector(".info-gallery-card");
+        if (!card) return track.clientWidth;
+        const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 0);
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      const go = (direction = 1) => {
+        const maxScroll = track.scrollWidth - track.clientWidth - 4;
+        if (direction > 0 && track.scrollLeft >= maxScroll) {
+          track.scrollTo({ left: 0, behavior: "smooth" });
+          return;
+        }
+        if (direction < 0 && track.scrollLeft <= 4) {
+          track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+          return;
+        }
+        track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
+      };
+
+      prev.addEventListener("click", () => go(-1));
+      next.addEventListener("click", () => go(1));
+
+      let auto = setInterval(() => go(1), 4200);
+      gallery.addEventListener("mouseenter", () => clearInterval(auto));
+      gallery.addEventListener("mouseleave", () => {
+        auto = setInterval(() => go(1), 4200);
+      });
+    });
+
     document.querySelectorAll("[data-carousel]").forEach((carousel, carouselIndex) => {
       const slides = Array.from(carousel.querySelectorAll(".clinic-slide"));
       let activeIndex = 0;
