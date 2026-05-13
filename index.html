@@ -2,6 +2,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18158129663"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18158129663');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aucare Pet</title>
@@ -2731,6 +2741,75 @@
         slides[activeIndex].classList.add("is-active");
       }, 4200 + carouselIndex * 450);
     });
+
+    /* Google Ads conversions */
+    const AW_ID = "AW-18158129663";
+
+    const CONV = {
+      maps: "I-hKCNKMtawcEP-jvNJD",
+      banhoTosa: "wPcrCJfDzKwcEP-jvNJD",
+      planosBanho: "9WjHCKu2zKwcEP-jvNJD",
+      outrosWpp: "EtuRCOTHtKwcEP-jvNJD",
+    };
+
+    function fireConversion(label, desc) {
+      if (typeof gtag !== "function") return;
+      gtag("event", "conversion", { send_to: AW_ID + "/" + label });
+      console.log("[Conversao]", desc);
+    }
+
+    function trackClicks(selectors, label, desc) {
+      selectors.forEach(function(selector) {
+        document.querySelectorAll(selector).forEach(function(el) {
+          el.addEventListener("click", function() {
+            fireConversion(label, desc);
+          });
+        });
+      });
+    }
+
+    trackClicks(
+      [".maps-button"],
+      CONV.maps,
+      "Abrir Google Maps"
+    );
+
+    trackClicks(
+      [
+        ".hero-button-primary",
+        ".service-card.grooming-card .whatsapp-button",
+      ],
+      CONV.banhoTosa,
+      "Agendar Banho e Tosa"
+    );
+
+    trackClicks(
+      [
+        ".plans-grid .plan-card:nth-child(1) .plan-more-button",
+        ".plans-grid .plan-card:nth-child(2) .plan-more-button",
+        ".plans-grid .plan-card:nth-child(3) .plan-more-button",
+      ],
+      CONV.planosBanho,
+      "Saiba Mais - Planos de Banho"
+    );
+
+    trackClicks(
+      [
+        ".hero-button-secondary",
+        ".service-card.clinic-card .more-button",
+        ".service-card.nutrition-card .more-button",
+        ".clinic-cta",
+        ".nutrition-cta",
+        ".product-card:nth-child(1)",
+        ".product-card:nth-child(2)",
+        ".product-card:nth-child(3)",
+        ".product-card:nth-child(4)",
+        ".floating-whatsapp",
+        ".footer-social a[href*='wa.me']",
+      ],
+      CONV.outrosWpp,
+      "Outros WhatsApp"
+    );
   </script>
 </body>
 </html>
